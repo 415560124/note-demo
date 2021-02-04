@@ -1,29 +1,20 @@
-package com.rhy.note;
+package com.rhy.note.work.controller;
 
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.alibaba.fastjson.JSONObject;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-@SpringBootTest
-class NoteDemoApplicationTests {
-
-    @Test
-    void contextLoads() {
+@RequestMapping("/test")
+@RestController
+public class TestController {
+    @GetMapping
+    public JSONObject countResultList(){
         List<CountObject> countObjectList = new ArrayList<CountObject>(){
             {
                 add(new CountObject().setType(1).setTotal(9).setOrgId("1").setOrgName("中心医院1"));
@@ -113,60 +104,10 @@ class NoteDemoApplicationTests {
                 countResultMap.put(countObject.getOrgId(),countResult);
             }
         });
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("data",countResults);
+        jsonObject.put("size",countResults.size());
+        jsonObject.put("total",10);
+        return jsonObject;
     }
-    @Test
-    void contextLoads1() throws IOException {
-        //通过流读取Excel文件
-        FileInputStream fileInputStream= new FileInputStream("C:\\Users\\41556\\Desktop\\test.xlsx");
-        //2.通过poi解析流 HSSFWorkbook 处理流得到的对象中 就封装了Excel文件所有的数据
-        XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
-        //获取表格中的sheet页数量
-        int numberOfSheets = workbook.getNumberOfSheets();
-        //FORMULA类型值读取器
-        FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
-        for(int i=0;i<numberOfSheets;i++){
-            //3.从文件中获取表对象  getSheetAt通过下标获取
-            XSSFSheet sheetAt = workbook.getSheetAt(i);
-            //4.从表中获取到行数据  从第二行开始 到 最后一行  getLastRowNum() 获取最后一行的下标
-            int lastRowNum = sheetAt.getLastRowNum();
-            for (int j = 1; j <= lastRowNum; j++) {
-                //通过下标获取行
-                XSSFRow row = sheetAt.getRow(j);
-                //获得行中的列总数
-                short lastCellNum = row.getLastCellNum();
-                //固定模板
-//                XSSFCell cell = row.getCell(0);
-//                String stringCellValue = cell.getStringCellValue();
-                //自定义可变式
-                for (int k = 0; k < lastCellNum; k++) {
-                    XSSFCell cell = row.getCell(k);
-                    //从行中获取数据
-                    switch (cell.getCellType()){
-                        case XSSFCell.CELL_TYPE_BOOLEAN:
-                            System.out.println(i+"-"+j+"-"+k+"-"+row.getCell(k).getBooleanCellValue());
-                            break;
-                        case XSSFCell.CELL_TYPE_NUMERIC:
-                            System.out.println(i+"-"+j+"-"+k+"-"+cell.getNumericCellValue());
-                            break;
-                        case XSSFCell.CELL_TYPE_STRING:
-                            System.out.println(i+"-"+j+"-"+k+"-"+cell.getStringCellValue());
-                            break;
-                        case XSSFCell.CELL_TYPE_BLANK:
-                            break;
-                        case XSSFCell.CELL_TYPE_ERROR:
-                            System.out.println(i+"-"+j+"-"+k+"-"+row.getCell(k).getErrorCellValue());
-                            break;
-                        case XSSFCell.CELL_TYPE_FORMULA:
-                            System.out.println(i+"-"+j+"-"+k+"-"+evaluator.evaluate(row.getCell(k)).getNumberValue());
-                            break;
-                    }
-
-
-                }
-            }
-
-        }
-        System.out.println(1);
-    }
-
 }
