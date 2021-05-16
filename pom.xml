@@ -60,6 +60,11 @@
             <artifactId>poi-ooxml-schemas</artifactId>
             <version>3.14</version>
         </dependency>
+        <!-- thymeleaf模板引擎依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
