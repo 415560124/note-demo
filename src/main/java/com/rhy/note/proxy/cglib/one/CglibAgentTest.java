@@ -45,7 +45,7 @@ public class CglibAgentTest {
                 return null;
             }
         };
-        enchaner.setCallback(interceptor);
+        enchaner.setCallback(new MyMethodInterceptor());
         CglibService student = (CglibService) enchaner.create();
         student.sayHello();
 
