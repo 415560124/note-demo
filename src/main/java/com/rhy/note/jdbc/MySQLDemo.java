@@ -38,22 +38,25 @@ public class MySQLDemo {
             stmt = conn.createStatement();
             String sql;
 //            sql = "SELECT id, name, url FROM websites";
-            sql = "SELECT mem_id, mem_name FROM member_info";
-            ResultSet rs = stmt.executeQuery(sql);
+//            sql = "SELECT mem_id, mem_name FROM member_info";
+            sql = "INSERT INTO member_info (mem_name) VALUE('测试')";
+//            ResultSet rs = stmt.executeQuery(sql);
+            int i = stmt.executeUpdate(sql);
 
             // 展开结果集数据库
-            while(rs.next()){
-                // 通过字段检索
-                int id  = rs.getInt("mem_id");
-                String name = rs.getString("mem_name");
-
-                // 输出数据
-                System.out.print("ID: " + id);
-                System.out.print(", 站点名称: " + name);
-                System.out.print("\n");
-            }
+//            while(rs.next()){
+//                // 通过字段检索
+//                int id  = rs.getInt("mem_id");
+//                String name = rs.getString("mem_name");
+//
+//                // 输出数据
+//                System.out.print("ID: " + id);
+//                System.out.print(", 站点名称: " + name);
+//                System.out.print("\n");
+//            }
+            System.out.println(i);
             // 完成后关闭
-            rs.close();
+//            rs.close();
             stmt.close();
             conn.close();
         }catch(SQLException se){
