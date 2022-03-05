@@ -24,6 +24,8 @@ public class ThreadPool {
         //上一个任务结束后延迟两秒后重复执行
 //        threadPoolExecutor.scheduleWithFixedDelay(new Task(String.valueOf(1)),5000,2,TimeUnit.MILLISECONDS);
         threadPoolExecutor.scheduleAtFixedRate(new Task(String.valueOf(1)), 0, 1, TimeUnit.SECONDS);//任延迟取最大值 稳定定时器
+
+
     }
 
     private static void testRetry(){
