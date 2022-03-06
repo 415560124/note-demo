@@ -1,4 +1,4 @@
-package com.rhy.note.concurrent.programming.thread;
+package com.rhy.note.thread.pool.thread;
 
 import lombok.extern.slf4j.Slf4j;
 

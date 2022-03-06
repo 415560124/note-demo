@@ -1,8 +1,7 @@
-package com.rhy.note.concurrent.pool;
+package com.rhy.note.thread.pool;
 
 
 import java.util.Date;
-import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
