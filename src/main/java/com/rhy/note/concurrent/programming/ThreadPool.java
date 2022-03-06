@@ -1,8 +1,15 @@
 package com.rhy.note.concurrent.programming;
 
+import com.alibaba.fastjson.JSONObject;
 import com.rhy.note.concurrent.programming.thread.ThreadPoolThread;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -23,9 +30,16 @@ public class ThreadPool {
 //        threadPoolExecutor.schedule(new Task(String.valueOf(1)),2,TimeUnit.MILLISECONDS);
         //上一个任务结束后延迟两秒后重复执行
 //        threadPoolExecutor.scheduleWithFixedDelay(new Task(String.valueOf(1)),5000,2,TimeUnit.MILLISECONDS);
-        threadPoolExecutor.scheduleAtFixedRate(new Task(String.valueOf(1)), 0, 1, TimeUnit.SECONDS);//任延迟取最大值 稳定定时器
-
-
+//        threadPoolExecutor.scheduleAtFixedRate(new Task(String.valueOf(1)), 0, 1, TimeUnit.SECONDS);//任延迟取最大值 稳定定时器
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={appid}&secret={secret}&code={code}&grant_type=authorization_code";
+        Map<String,String> map = new HashMap<>();
+        map.put("appid","wx95ea09b31d62c727");
+        map.put("secret","123456");
+        map.put("code","123456");
+        ResponseEntity<String> result = restTemplate.getForEntity(url,String.class,map);
+        JSONObject jsonObject = JSONObject.parseObject(result.getBody());
+        jsonObject.get("openid");
     }
 
     private static void testRetry(){

@@ -15,7 +15,7 @@ public class ScheduledThreadPoolExecutorExample {
         System.out.println("Created : " + task.getName());
        // executor.schedule(task, 2, TimeUnit.SECONDS);
 //        executor.scheduleWithFixedDelay(task, 0, 2, TimeUnit.SECONDS); //任务+延迟
-        executor.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);//任延迟取最大值 稳定定时器
+        executor.scheduleAtFixedRate(task, 0, 3, TimeUnit.SECONDS);//任延迟取最大值 稳定定时器
 
     }
 }
@@ -34,10 +34,10 @@ class Task implements Runnable {
 
     public void run() {
         atomicInteger.incrementAndGet();
-//        if(true){
-//
-//            throw  new NullPointerException();
-//        }
+        if(true){
+
+            throw  new NullPointerException();
+        }
         System.out.println("Executing : " + name + ", Current Seconds : " + new Date().getSeconds());
         try {
             Thread.sleep(5000);
