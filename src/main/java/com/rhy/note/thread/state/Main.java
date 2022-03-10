@@ -4,14 +4,15 @@ import lombok.SneakyThrows;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        Thread thread = new Thread();
-//        Thread thread = new Thread(new Runnable() {
-//            @SneakyThrows
-//            @Override
-//            public void run() {
+//        Thread thread = new Thread();
+        Thread thread = new Thread(new Runnable() {
+            @SneakyThrows
+            @Override
+            public void run() {
 //                Thread.sleep(2000);
-//            }
-//        });
+                Thread.yield();
+            }
+        });
 //        Object sync = new Object();
 //        Thread thread = new Thread(new Runnable() {
 //            @SneakyThrows
