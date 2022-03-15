@@ -1,4 +1,4 @@
-package com.rhy.note.concurrent.programming;
+package com.rhy.note.thread.cas;
 
 import java.util.ArrayList;
 import java.util.List;
