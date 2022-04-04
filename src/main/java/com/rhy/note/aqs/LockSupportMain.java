@@ -1,4 +1,4 @@
-package com.rhy.note.thread;
+package com.rhy.note.aqs;
 
 import java.util.concurrent.locks.LockSupport;
 
