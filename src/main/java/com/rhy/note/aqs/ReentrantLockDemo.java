@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ReentrantLockDemo {
     private static int sum = 0;
