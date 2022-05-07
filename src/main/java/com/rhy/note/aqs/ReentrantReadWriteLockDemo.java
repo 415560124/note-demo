@@ -1,6 +1,7 @@
 package com.rhy.note.aqs;
 
 import java.util.ArrayList;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ReentrantReadWriteLockDemo {
