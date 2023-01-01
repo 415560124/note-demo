@@ -70,14 +70,19 @@ public class WordCount {
     public static void doing(String outputPath,String... inputPaths) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration configuration = new Configuration();
         Job job = Job.getInstance(configuration,"WordCount");
+        job.setUser("root");
         //执行程序class
         job.setJarByClass(WordCount.class);
         //Map的实现类
         job.setMapperClass(TokenizerMapper.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(IntWritable.class);
         //Combiner的实现类
         job.setCombinerClass(IntSumReducer.class);
         //Reducer的实现类
         job.setReducerClass(IntSumReducer.class);
+        //自定义Reduce任务数量
+        job.setNumReduceTasks(4);
         //输出key类型(和Reducer的输出对上)
         job.setOutputKeyClass(Text.class);
         //输出value类型(和Reducer的输出对上)
@@ -85,12 +90,11 @@ public class WordCount {
         for (String inputPath : inputPaths) {
             FileInputFormat.addInputPath(job,new Path(inputPath));
         }
-        FileInputFormat.addInputPath(job,new Path("hdfs://192.168.31.130:9000/input/file2.txt"));
         FileOutputFormat.setOutputPath(job,new Path(outputPath));
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
-        doing("hdfs://192.168.31.130:9000/input/wordcount.txt","hdfs://192.168.31.130:9000/input/file1.txt","hdfs://192.168.31.130:9000/input/file2.txt");
+        doing("hdfs://192.168.31.131:9000/output/wordcount.txt","hdfs://192.168.31.131:9000/user/root/input/file1.txt","hdfs://192.168.31.131:9000/user/root/input/file2.txt");
     }
 }
