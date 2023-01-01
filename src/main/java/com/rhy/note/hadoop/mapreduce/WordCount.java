@@ -81,8 +81,6 @@ public class WordCount {
         job.setCombinerClass(IntSumReducer.class);
         //Reducer的实现类
         job.setReducerClass(IntSumReducer.class);
-        //自定义Reduce任务数量
-        job.setNumReduceTasks(4);
         //输出key类型(和Reducer的输出对上)
         job.setOutputKeyClass(Text.class);
         //输出value类型(和Reducer的输出对上)
