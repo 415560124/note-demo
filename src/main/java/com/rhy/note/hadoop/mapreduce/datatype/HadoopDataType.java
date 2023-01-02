@@ -1,4 +1,4 @@
-package com.rhy.note.hadoop.mapreduce;
+package com.rhy.note.hadoop.mapreduce.datatype;
 
 import org.apache.hadoop.io.*;
 import org.apache.poi.ss.formula.functions.T;
