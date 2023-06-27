@@ -20,7 +20,7 @@ import java.util.List;
 @EqualsAndHashCode
 @ExcelTarget("demoData")
 public class DemoDataChild implements java.io.Serializable {
-    @Excel(name = "字符串标题")
+    @Excel(name = "字符串标题",width = 50)
     private String string;
     @Excel(name = "日期标题",format = "yyyy-MM-dd HH:mm:ss")
     private Date date;
