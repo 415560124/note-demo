@@ -19,13 +19,11 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode
 @ExcelTarget("demoData")
-public class DemoData implements java.io.Serializable {
-    @Excel(name = "字符串标题",needMerge = true)
+public class DemoDataChild implements java.io.Serializable {
+    @Excel(name = "字符串标题")
     private String string;
-    @Excel(name = "日期标题",format = "yyyy-MM-dd HH:mm:ss",needMerge = true)
+    @Excel(name = "日期标题",format = "yyyy-MM-dd HH:mm:ss")
     private Date date;
-    @Excel(name = "数字标题",needMerge = true)
+    @Excel(name = "数字标题")
     private Double doubleData;
-    @ExcelCollection(name = "集合数据")
-    private List<DemoDataChild> demoDataList;
 }

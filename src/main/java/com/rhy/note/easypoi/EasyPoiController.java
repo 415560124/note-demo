@@ -44,8 +44,18 @@ public class EasyPoiController {
             DemoData data = new DemoData();
             data.setString("字符串" + i);
             data.setDate(new Date());
-            data.setDoubleData(0.56);
+            data.setDoubleData(0.56+i);
             list.add(data);
+
+            List<DemoDataChild> listChild = new ArrayList<>();
+            for (int j = 0; j < 5; j++) {
+                DemoDataChild dataChild = new DemoDataChild();
+                dataChild.setString("字符串" + i + j);
+                dataChild.setDate(new Date());
+                dataChild.setDoubleData(0.56);
+                listChild.add(dataChild);
+            }
+            data.setDemoDataList(listChild);
         }
         return list;
     }
@@ -60,4 +70,5 @@ public class EasyPoiController {
         new ExcelExportServer().createSheet(workbook, entity, pojoClass, dataSet);
         return workbook;
     }
+
 }
