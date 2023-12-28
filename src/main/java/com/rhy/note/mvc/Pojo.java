@@ -9,4 +9,12 @@ package com.rhy.note.mvc;
 public class Pojo {
     private String name;
     private String haircolor;
+
+    public static void main(String[] args) {
+        long l = System.currentTimeMillis();
+        for (int i = 0; i < 1000000; i++) {
+
+        }
+        System.out.println(System.currentTimeMillis() - l);
+    }
 }
