@@ -3,16 +3,53 @@ package com.rhy.note;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 @SpringBootApplication
 public class NoteDemoApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(NoteDemoApplication.class, args);
+//        SpringApplication.run(NoteDemoApplication.class, args);
+        double[] arr =new double[]{
+                46.74,
+                49.33,
+                45.24,
+                50.62,
+                46.02,
+                50.41,
+                45.32,
+                46.1,
+                51.28,
+                52.14,
+                49.06,
+                47.4,
+                47.76,
+                44.73,
+                43.06,
+                51.26,
+                46.54,
+                47.16,
+                47.59,
+                45.19,
+                54.31,
+                56.79,
+                46.22,
+                58.2,
+                45.73,
+                52.13,
+                47.49,
+                54.55,
+                45.77,
+                45.68,
+                47.44,
+                42.39,
+                45.24,
+                44.15,
+                45.31,
+                44.94
+        };
+        System.out.println(Arrays.stream(arr).sum());
 //        List<CustomA> customAList = new ArrayList<>();
 //        //表总数
 //        int tableNum = 7;
