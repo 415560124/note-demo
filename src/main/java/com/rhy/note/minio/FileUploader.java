@@ -34,7 +34,7 @@ public class FileUploader {
             minioClient.uploadObject(
                     UploadObjectArgs.builder()
                             .bucket("asiatrip")
-                            .object("asiaphotos-2015.zip")
+                            .object("ai/架次ID/xxx.png")
                             .filename("/home/user/Photos/asiaphotos.zip")
                             .build());
             System.out.println(
