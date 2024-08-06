@@ -16,7 +16,7 @@ public class ProcessDemo {
                 System.out.println(">>>>>>>>>>推流视频切换<<<<<<<<<<");
             }
             // cmd命令拼接，注意命令中存在空格
-            String command = ffmpegPath+"ffmpeg -hwaccel cuda -re -i D:\\ffmpeg\\bin\\DJI_20220805110354_0003_Z1.MP4 -bf 0 -vcodec h264 -acodec aac -strict -2 -f flv rtmp://12.30.4.137:10086/live/javaffmpeg"; // ffmpeg位置
+            String command = ffmpegPath+"ffmpeg -hwaccel cuda -re -i D:\\ffmpeg\\bin\\DJI_20220805110354_0003_W.MP4 -bf 0 -vcodec h264 -acodec aac -strict -2 -f flv rtmp://12.30.4.137:10086/live/javaffmpeg2"; // ffmpeg位置
 
             // 运行cmd命令，获取其进程
             process = Runtime.getRuntime().exec(command);
